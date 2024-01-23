@@ -102,6 +102,7 @@ task("l2-usdc-and-bridge-deploy", "Deploy USDC and the usdc bridge for L2")
 
         const bridgeContracts = await UsdcBridgeDeployer.deployL2Bridge(actor);
         const usdcContracts = await UsdcBridgeDeployer.deployBridgedUsdc(
+            hre,
             actor,
             args.adminAddress,
             args.serviceName,
