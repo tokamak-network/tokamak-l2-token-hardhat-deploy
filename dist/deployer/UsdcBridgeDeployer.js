@@ -23,7 +23,7 @@ class UsdcBridgeDeployer {
     constructor(deployer) {
         this.deployer = deployer;
     }
-    static async setL1Bridge(actor, l1CrossDomainMessenger, l1UsdcAddress, l2UsdcAddress, l1UsdcBridgeAddress, l2UsdcBridgeAddress, hh) {
+    static async setL1Bridge(hh, actor, l1CrossDomainMessenger, l1UsdcAddress, l2UsdcAddress, l1UsdcBridgeAddress, l2UsdcBridgeAddress) {
         const L1UsdcBridgeProxy = await hh.ethers.getContractAt(artifacts.L1UsdcBridgeProxy.abi, l1UsdcBridgeAddress, actor);
         let l1Messenger = await L1UsdcBridgeProxy.messenger();
         let otherBridge = await L1UsdcBridgeProxy.otherBridge();

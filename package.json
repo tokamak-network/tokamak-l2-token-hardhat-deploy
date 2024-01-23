@@ -1,6 +1,6 @@
 {
   "name": "@tokamak-network/tokamak-usdc-deploy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "deploy the usdc and usdc bridge contract for L2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

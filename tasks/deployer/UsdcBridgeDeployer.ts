@@ -30,13 +30,13 @@ export class UsdcBridgeDeployer {
     }
 
     static async setL1Bridge(
+      hh: any,
       actor: Signer,
       l1CrossDomainMessenger: string,
       l1UsdcAddress: string,
       l2UsdcAddress: string,
       l1UsdcBridgeAddress: string,
       l2UsdcBridgeAddress: string,
-      hh: any
     ): Promise<{ [name: string]: Contract }> {
 
       const L1UsdcBridgeProxy = await hh.ethers.getContractAt(artifacts.L1UsdcBridgeProxy.abi,l1UsdcBridgeAddress, actor)

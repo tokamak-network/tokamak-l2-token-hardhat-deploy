@@ -3,7 +3,7 @@ export declare class UsdcBridgeDeployer {
     deployer: Signer;
     hre: any;
     constructor(deployer: Signer);
-    static setL1Bridge(actor: Signer, l1CrossDomainMessenger: string, l1UsdcAddress: string, l2UsdcAddress: string, l1UsdcBridgeAddress: string, l2UsdcBridgeAddress: string, hh: any): Promise<{
+    static setL1Bridge(hh: any, actor: Signer, l1CrossDomainMessenger: string, l1UsdcAddress: string, l2UsdcAddress: string, l1UsdcBridgeAddress: string, l2UsdcBridgeAddress: string): Promise<{
         [name: string]: Contract;
     }>;
     static deployL1Bridge(actor: Signer): Promise<{
