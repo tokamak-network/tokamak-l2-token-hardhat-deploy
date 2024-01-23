@@ -87,7 +87,7 @@ const UsdcBridgeDeployer_1 = require("./deployer/UsdcBridgeDeployer");
     const [actor] = await hre.ethers.getSigners();
     const L2CrossDomainMessenger = "0x4200000000000000000000000000000000000007";
     const bridgeContracts = await UsdcBridgeDeployer_1.UsdcBridgeDeployer.deployL2Bridge(actor);
-    const usdcContracts = await UsdcBridgeDeployer_1.UsdcBridgeDeployer.deployBridgedUsdc(actor, args.adminAddress, args.serviceName, actor.address);
+    const usdcContracts = await UsdcBridgeDeployer_1.UsdcBridgeDeployer.deployBridgedUsdc(hre, actor, args.adminAddress, args.serviceName, actor.address);
     if (hre.network.name != "hardhat" && hre.network.name != "localhost") {
         await hre.run("etherscan-verify", {
             network: hre.network.name
