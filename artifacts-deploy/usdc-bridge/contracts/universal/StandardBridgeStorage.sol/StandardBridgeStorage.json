@@ -1,0 +1,63 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "StandardBridgeStorage",
+  "sourceName": "contracts/universal/StandardBridgeStorage.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "l1Usdc",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "l2Usdc",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "messenger",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "otherBridge",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b5060bc8061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060465760003560e01c80633cb747bf14604b57806356c3b587146079578063a1b4bc0414608b578063c89701a214609d575b600080fd5b600054605d906001600160a01b031681565b6040516001600160a01b03909116815260200160405180910390f35b600254605d906001600160a01b031681565b600354605d906001600160a01b031681565b600154605d906001600160a01b03168156fea164736f6c6343000814000a",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060465760003560e01c80633cb747bf14604b57806356c3b587146079578063a1b4bc0414608b578063c89701a214609d575b600080fd5b600054605d906001600160a01b031681565b6040516001600160a01b03909116815260200160405180910390f35b600254605d906001600160a01b031681565b600354605d906001600160a01b031681565b600154605d906001600160a01b03168156fea164736f6c6343000814000a",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

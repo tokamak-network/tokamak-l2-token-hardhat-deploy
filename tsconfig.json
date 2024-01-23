@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "allowJs": true,
+    "module": "commonjs",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "strict": true,
+    "rootDirs": ["./tasks"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": "./"
+  },
+  "exclude": ["dist", "node_modules"],
+  "include": ["./tasks"]
+}
