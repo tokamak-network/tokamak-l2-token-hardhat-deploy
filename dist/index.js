@@ -9,6 +9,29 @@ require("./type-extensions");
 const cli_table3_1 = __importDefault(require("cli-table3"));
 const UsdcBridgeDeployer_1 = require("./deployer/UsdcBridgeDeployer");
 const Erc20Deployer_1 = require("./deployer/Erc20Deployer");
+(0, config_1.task)("l2-erc20-deploy", "Deploy the erc20 on L2")
+    .addParam("l1TokenAddress", "L1 Token Address")
+    .addParam("tokenName", "Token Name")
+    .addParam("tokenSymbol", "Token Symbol")
+    .addParam("tokenDecimals", "Token Decimals")
+    .addOptionalParam("outputType", "Output type")
+    .setAction(async (args, hre) => {
+    const [actor] = await hre.ethers.getSigners();
+    const tokens = await Erc20Deployer_1.Erc20Deployer.deployERC20(hre, actor, args.l1TokenAddress, args.tokenName, args.tokenSymbol, args.tokenDecimals);
+    const table = new cli_table3_1.default({
+        head: ["Contract", "Address"],
+        style: { border: [] },
+    });
+    if (args.outputType == "json") {
+        console.info(tokens);
+    }
+    else {
+        for (const item of Object.keys(tokens)) {
+            table.push([item, tokens[item]]);
+        }
+        console.info(table.toString());
+    }
+});
 (0, config_1.task)("l1-usdc-bridge-deploy", "Deploy the usdc bridge on L1")
     .addOptionalParam("adminAddress", "Admin Address")
     .addOptionalParam("outputType", "Output type")
@@ -135,23 +158,5 @@ const Erc20Deployer_1 = require("./deployer/Erc20Deployer");
     // const L2CrossDomainMessenger = "0x4200000000000000000000000000000000000007"
     const contract = await UsdcBridgeDeployer_1.UsdcBridgeDeployer.setL1Bridge(hre, actor, args.l1CrossDomainMessenger, args.l1UsdcAddress, args.l2UsdcAddress, args.l1UsdcBridgeAddress, args.l2UsdcBridgeAddress);
     console.info('l1-usdc-bridge-set  done');
-});
-(0, config_1.task)("l2-erc20-deploy", "Deploy the erc20 on L2")
-    .addParam("l1TokenAddress", "L1 Token Address")
-    .addParam("tokenName", "Token Name")
-    .addParam("tokenSymbol", "Token Symbol")
-    .addParam("tokenDecimals", "Token Decimals")
-    .addOptionalParam("outputType", "Output type")
-    .setAction(async (args, hre) => {
-    const [actor] = await hre.ethers.getSigners();
-    const tokens = await Erc20Deployer_1.Erc20Deployer.deployERC20(hre, actor, args.l1TokenAddress, args.tokenName, args.tokenSymbol, args.tokenDecimals);
-    const table = new cli_table3_1.default({
-        head: ["Contract", "Address"],
-        style: { border: [] },
-    });
-    for (const item of Object.keys(tokens)) {
-        table.push([item, tokens[item]]);
-    }
-    console.info(table.toString());
 });
 //# sourceMappingURL=index.js.map

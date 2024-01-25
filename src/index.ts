@@ -7,6 +7,39 @@ import Table from "cli-table3";
 import { UsdcBridgeDeployer } from "./deployer/UsdcBridgeDeployer";
 import { Erc20Deployer } from "./deployer/Erc20Deployer";
 
+task("l2-erc20-deploy", "Deploy the erc20 on L2")
+    .addParam("l1TokenAddress", "L1 Token Address")
+    .addParam("tokenName", "Token Name")
+    .addParam("tokenSymbol", "Token Symbol")
+    .addParam("tokenDecimals", "Token Decimals")
+    .addOptionalParam("outputType", "Output type")
+    .setAction(async (args, hre) => {
+        const [actor] = await hre.ethers.getSigners();
+        const tokens = await Erc20Deployer.deployERC20(
+            hre,
+            actor,
+            args.l1TokenAddress,
+            args.tokenName,
+            args.tokenSymbol,
+            args.tokenDecimals
+        );
+
+        const table = new Table({
+            head: ["Contract", "Address"],
+            style: { border: [] },
+        });
+
+        if(args.outputType == "json") {
+            console.info(tokens);
+        } else {
+
+            for (const item of Object.keys(tokens)) {
+                table.push([item, tokens[item]]);
+            }
+            console.info(table.toString());
+        }
+});
+
 task("l1-usdc-bridge-deploy", "Deploy the usdc bridge on L1")
     .addOptionalParam("adminAddress", "Admin Address")
     .addOptionalParam("outputType", "Output type")
@@ -191,31 +224,3 @@ task("l1-usdc-bridge-set", "Set addresses at L1 USDC Bridge")
 });
 
 
-task("l2-erc20-deploy", "Deploy the erc20 on L2")
-    .addParam("l1TokenAddress", "L1 Token Address")
-    .addParam("tokenName", "Token Name")
-    .addParam("tokenSymbol", "Token Symbol")
-    .addParam("tokenDecimals", "Token Decimals")
-    .addOptionalParam("outputType", "Output type")
-    .setAction(async (args, hre) => {
-        const [actor] = await hre.ethers.getSigners();
-        const tokens = await Erc20Deployer.deployERC20(
-            hre,
-            actor,
-            args.l1TokenAddress,
-            args.tokenName,
-            args.tokenSymbol,
-            args.tokenDecimals
-        );
-
-        const table = new Table({
-            head: ["Contract", "Address"],
-            style: { border: [] },
-        });
-
-        for (const item of Object.keys(tokens)) {
-            table.push([item, tokens[item]]);
-        }
-        console.info(table.toString());
-
-});
