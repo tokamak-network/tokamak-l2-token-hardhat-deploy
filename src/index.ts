@@ -5,8 +5,9 @@ import "./type-extensions";
 import Table from "cli-table3";
 
 import { UsdcBridgeDeployer } from "./deployer/UsdcBridgeDeployer";
+import { Erc20Deployer } from "./deployer/Erc20Deployer";
 
-task("l1-usdc-bridge-deploy", "Deploy the usdc bridge of L1")
+task("l1-usdc-bridge-deploy", "Deploy the usdc bridge on L1")
     .addOptionalParam("adminAddress", "Admin Address")
     .addOptionalParam("outputType", "Output type")
     .setAction(async (args, hre) => {
@@ -37,14 +38,14 @@ task("l1-usdc-bridge-deploy", "Deploy the usdc bridge of L1")
                 style: { border: [] },
             });
             for (const item of Object.keys(contracts)) {
-            table.push([item, contracts[item].address]);
+                table.push([item, contracts[item].address]);
             }
             console.info(table.toString());
         }
 });
 
 
-task("l2-usdc-bridge-deploy", "Deploy the usdc bridge of L2").setAction(async (args, hre) => {
+task("l2-usdc-bridge-deploy", "Deploy the usdc bridge on L2").setAction(async (args, hre) => {
     const [actor] = await hre.ethers.getSigners();
     const contracts = await UsdcBridgeDeployer.deployL2Bridge(actor);
 
@@ -89,7 +90,7 @@ task("usdc-deploy", "Deploy the bridged usdc")
         }
 });
 
-task("l2-usdc-and-bridge-deploy", "Deploy USDC and the usdc bridge for L2")
+task("l2-usdc-and-bridge-deploy", "Deploy USDC and the usdc bridge on L2")
     .addParam("adminAddress", "Admin Address")
     .addParam("serviceName", "Service Address")
     .addParam("l1UsdcAddress", "L1 Usdc Address")
@@ -165,7 +166,7 @@ task("l2-usdc-and-bridge-deploy", "Deploy USDC and the usdc bridge for L2")
 });
 
 
-task("set-l1-usdc-bridge", "Set L1 USDC Bridge")
+task("l1-usdc-bridge-set", "Set addresses at L1 USDC Bridge")
     .addParam("l1CrossDomainMessenger", "L1 CrossDomainMessenger Address")
     .addParam("l1UsdcAddress", "L1 Usdc Address")
     .addParam("l2UsdcAddress", "L2 Usdc Address")
@@ -186,7 +187,35 @@ task("set-l1-usdc-bridge", "Set L1 USDC Bridge")
             args.l2UsdcBridgeAddress
             );
 
-        console.info('set-l1-usdc-bridge  done')
+        console.info('l1-usdc-bridge-set  done')
 });
 
 
+task("l2-erc20-deploy", "Deploy the erc20 on L2")
+    .addParam("l1TokenAddress", "L1 Token Address")
+    .addParam("tokenName", "Token Name")
+    .addParam("tokenSymbol", "Token Symbol")
+    .addParam("tokenDecimals", "Token Decimals")
+    .addOptionalParam("outputType", "Output type")
+    .setAction(async (args, hre) => {
+        const [actor] = await hre.ethers.getSigners();
+        const tokens = await Erc20Deployer.deployERC20(
+            hre,
+            actor,
+            args.l1TokenAddress,
+            args.tokenName,
+            args.tokenSymbol,
+            args.tokenDecimals
+        );
+
+        const table = new Table({
+            head: ["Contract", "Address"],
+            style: { border: [] },
+        });
+
+        for (const item of Object.keys(tokens)) {
+            table.push([item, tokens[item]]);
+        }
+        console.info(table.toString());
+
+});

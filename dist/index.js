@@ -8,7 +8,8 @@ require("@nomiclabs/hardhat-ethers");
 require("./type-extensions");
 const cli_table3_1 = __importDefault(require("cli-table3"));
 const UsdcBridgeDeployer_1 = require("./deployer/UsdcBridgeDeployer");
-(0, config_1.task)("l1-usdc-bridge-deploy", "Deploy the usdc bridge of L1")
+const Erc20Deployer_1 = require("./deployer/Erc20Deployer");
+(0, config_1.task)("l1-usdc-bridge-deploy", "Deploy the usdc bridge on L1")
     .addOptionalParam("adminAddress", "Admin Address")
     .addOptionalParam("outputType", "Output type")
     .setAction(async (args, hre) => {
@@ -41,7 +42,7 @@ const UsdcBridgeDeployer_1 = require("./deployer/UsdcBridgeDeployer");
         console.info(table.toString());
     }
 });
-(0, config_1.task)("l2-usdc-bridge-deploy", "Deploy the usdc bridge of L2").setAction(async (args, hre) => {
+(0, config_1.task)("l2-usdc-bridge-deploy", "Deploy the usdc bridge on L2").setAction(async (args, hre) => {
     const [actor] = await hre.ethers.getSigners();
     const contracts = await UsdcBridgeDeployer_1.UsdcBridgeDeployer.deployL2Bridge(actor);
     const table = new cli_table3_1.default({
@@ -77,7 +78,7 @@ const UsdcBridgeDeployer_1 = require("./deployer/UsdcBridgeDeployer");
         });
     }
 });
-(0, config_1.task)("l2-usdc-and-bridge-deploy", "Deploy USDC and the usdc bridge for L2")
+(0, config_1.task)("l2-usdc-and-bridge-deploy", "Deploy USDC and the usdc bridge on L2")
     .addParam("adminAddress", "Admin Address")
     .addParam("serviceName", "Service Address")
     .addParam("l1UsdcAddress", "L1 Usdc Address")
@@ -123,7 +124,7 @@ const UsdcBridgeDeployer_1 = require("./deployer/UsdcBridgeDeployer");
         console.info(table.toString());
     }
 });
-(0, config_1.task)("set-l1-usdc-bridge", "Set L1 USDC Bridge")
+(0, config_1.task)("l1-usdc-bridge-set", "Set addresses at L1 USDC Bridge")
     .addParam("l1CrossDomainMessenger", "L1 CrossDomainMessenger Address")
     .addParam("l1UsdcAddress", "L1 Usdc Address")
     .addParam("l2UsdcAddress", "L2 Usdc Address")
@@ -133,6 +134,24 @@ const UsdcBridgeDeployer_1 = require("./deployer/UsdcBridgeDeployer");
     const [actor] = await hre.ethers.getSigners();
     // const L2CrossDomainMessenger = "0x4200000000000000000000000000000000000007"
     const contract = await UsdcBridgeDeployer_1.UsdcBridgeDeployer.setL1Bridge(hre, actor, args.l1CrossDomainMessenger, args.l1UsdcAddress, args.l2UsdcAddress, args.l1UsdcBridgeAddress, args.l2UsdcBridgeAddress);
-    console.info('set-l1-usdc-bridge  done');
+    console.info('l1-usdc-bridge-set  done');
+});
+(0, config_1.task)("l2-erc20-deploy", "Deploy the erc20 on L2")
+    .addParam("l1TokenAddress", "L1 Token Address")
+    .addParam("tokenName", "Token Name")
+    .addParam("tokenSymbol", "Token Symbol")
+    .addParam("tokenDecimals", "Token Decimals")
+    .addOptionalParam("outputType", "Output type")
+    .setAction(async (args, hre) => {
+    const [actor] = await hre.ethers.getSigners();
+    const tokens = await Erc20Deployer_1.Erc20Deployer.deployERC20(hre, actor, args.l1TokenAddress, args.tokenName, args.tokenSymbol, args.tokenDecimals);
+    const table = new cli_table3_1.default({
+        head: ["Contract", "Address"],
+        style: { border: [] },
+    });
+    for (const item of Object.keys(tokens)) {
+        table.push([item, tokens[item]]);
+    }
+    console.info(table.toString());
 });
 //# sourceMappingURL=index.js.map
