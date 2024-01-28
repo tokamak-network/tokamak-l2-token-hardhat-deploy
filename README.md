@@ -107,7 +107,7 @@ Deploy using the **l1-usdc-bridge-deploy** hardhat task.
 
 Deploy using the **l2-usdc-and-bridge-deploy** hardhat task.
 
-> `**npx hardhat l2-usdc-and-bridge-deploy** --service-name {serviceName} --l1-usdc-address {L1 usdc address} --l1-usdc-bridge-address {L1 usdc bridge address} —l2-usdc-admin  {usdc admin} —l2-usdc-minter-admin {master minter admin} —l2-usdt-proxy-admin  {usdc proxy admin}`
+> `npx hardhat l2-usdc-and-bridge-deploy --service-name {serviceName} --l1-usdc-address {L1 usdc address} --l1-usdc-bridge-address {L1 usdc bridge address} —l2-usdc-admin  {usdc admin} —l2-usdc-minter-admin {master minter admin} —l2-usdt-proxy-admin  {usdc proxy admin}`
 >
 - Required parameters
     - service-name : service name (ex) tokamak network
@@ -148,7 +148,7 @@ TOKEN_DECIMALS: 6,
 
 l2UsdcAdmin must be different from deployer.
 
-> `**npx hardhat** --network localhost **l2-usdc-and-bridge-deploy** --service-name 'new titna' --l1-usdc-address 0x693a591A27750eED2A0e14BC73bB1F313116a1cb --l1-usdc-bridge-address 0xc63C3EA966E0E6a1F8C45f638D0447da06A9F287 --l2-usdc-admin  0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 --l2-usdc-minter-admin 0x70997970C51812dc3A010C7d01b50e0d17dc79C8 --l2-usdc-proxy-admin 0x70997970C51812dc3A010C7d01b50e0d17dc79C8`
+> `npx hardhat --network localhost l2-usdc-and-bridge-deploy --service-name 'new titna' --l1-usdc-address 0x693a591A27750eED2A0e14BC73bB1F313116a1cb --l1-usdc-bridge-address 0xc63C3EA966E0E6a1F8C45f638D0447da06A9F287 --l2-usdc-admin  0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 --l2-usdc-minter-admin 0x70997970C51812dc3A010C7d01b50e0d17dc79C8 --l2-usdc-proxy-admin 0x70997970C51812dc3A010C7d01b50e0d17dc79C8`
 >
 >
 
@@ -157,20 +157,20 @@ l2UsdcAdmin must be different from deployer.
 
 l2UsdcAdmin must be different from l2UsdcProxyAdmin.
 
-> `**npx hardhat** --network localhost **l2-usdc-and-bridge-deploy** --service-name 'new titna' --l1-usdc-address 0x693a591A27750eED2A0e14BC73bB1F313116a1cb --l1-usdc-bridge-address 0xc63C3EA966E0E6a1F8C45f638D0447da06A9F287 --l2-usdc-admin  0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 --l2-usdc-minter-admin 0x70997970C51812dc3A010C7d01b50e0d17dc79C8 --l2-usdc-proxy-admin 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266`
+> `npx hardhat --network localhost l2-usdc-and-bridge-deploy --service-name 'new titna' --l1-usdc-address 0x693a591A27750eED2A0e14BC73bB1F313116a1cb --l1-usdc-bridge-address 0xc63C3EA966E0E6a1F8C45f638D0447da06A9F287 --l2-usdc-admin  0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 --l2-usdc-minter-admin 0x70997970C51812dc3A010C7d01b50e0d17dc79C8 --l2-usdc-proxy-admin 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266`
 >
 >
 
 **example**
 
-> `**npx hardhat** --network localhost **l2-usdc-and-bridge-deploy** --service-name 'new titna' --l1-usdc-address 0x693a591A27750eED2A0e14BC73bB1F313116a1cb --l1-usdc-bridge-address 0xc63C3EA966E0E6a1F8C45f638D0447da06A9F287 --l2-usdc-admin  0x70997970C51812dc3A010C7d01b50e0d17dc79C8 --l2-usdc-minter-admin 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC --l2-usdc-proxy-admin 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC **--output-type json**`
+> `npx hardhat --network localhost l2-usdc-and-bridge-deploy --service-name 'new titna' --l1-usdc-address 0x693a591A27750eED2A0e14BC73bB1F313116a1cb --l1-usdc-bridge-address 0xc63C3EA966E0E6a1F8C45f638D0447da06A9F287 --l2-usdc-admin  0x70997970C51812dc3A010C7d01b50e0d17dc79C8 --l2-usdc-minter-admin 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC --l2-usdc-proxy-admin 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC --output-type json`
 >
 >
 
 
 **example**
 
-> `**npx hardhat** --network localhost **l2-usdc-and-bridge-deploy** --service-name 'new titna' --l1-usdc-address 0x693a591A27750eED2A0e14BC73bB1F313116a1cb --l1-usdc-bridge-address 0xc63C3EA966E0E6a1F8C45f638D0447da06A9F287 --l2-usdc-admin  0x70997970C51812dc3A010C7d01b50e0d17dc79C8 --l2-usdc-minter-admin 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC --l2-usdc-proxy-admin 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC  ****`
+> `npx hardhat --network localhost l2-usdc-and-bridge-deploy --service-name 'new titna' --l1-usdc-address 0x693a591A27750eED2A0e14BC73bB1F313116a1cb --l1-usdc-bridge-address 0xc63C3EA966E0E6a1F8C45f638D0447da06A9F287 --l2-usdc-admin  0x70997970C51812dc3A010C7d01b50e0d17dc79C8 --l2-usdc-minter-admin 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC --l2-usdc-proxy-admin 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC `
 >
 >
 > ```jsx
@@ -201,7 +201,7 @@ l2UsdcAdmin must be different from l2UsdcProxyAdmin.
 
 Deploy using the **l1-usdc-bridge-set** hardhat task.
 
-> `npx hardhat **l1-usdc-bridge-set** --l1-cross-domain-messenger {l1-cross-domain-messenger Address}  --l1-usdc-address {L1 usdc address} --l2-usdc-address {L2 usdc address} --l1-usdc-bridge-address {L1 usdc bridge address} --l2-usdc-bridge-address {L2 usdc bridge address}`
+> `npx hardhat l1-usdc-bridge-set --l1-cross-domain-messenger {l1-cross-domain-messenger Address}  --l1-usdc-address {L1 usdc address} --l2-usdc-address {L2 usdc address} --l1-usdc-bridge-address {L1 usdc bridge address} --l2-usdc-bridge-address {L2 usdc bridge address}`
 >
 
 - Required parameters
@@ -214,6 +214,6 @@ Deploy using the **l1-usdc-bridge-set** hardhat task.
 
 **example**
 
-> `npx hardhat --network localhost **l1-usdc-bridge-set** --l1-cross-domain-messenger 0xa94B847AAc9F00f10dA2F5c476408Fd5477D7d49 --l1-usdc-address 0x693a591A27750eED2A0e14BC73bB1F313116a1cb --l2-usdc-address 0x90B87CEa589C66E0A271BD5355C3585047724b97 --l1-usdc-bridge-address 0xc63C3EA966E0E6a1F8C45f638D0447da06A9F287 --l2-usdc-bridge-address 0xD1B6bc625487672a7AA04531c96fF1535c480d89`
+> `npx hardhat --network localhost l1-usdc-bridge-set --l1-cross-domain-messenger 0xa94B847AAc9F00f10dA2F5c476408Fd5477D7d49 --l1-usdc-address 0x693a591A27750eED2A0e14BC73bB1F313116a1cb --l2-usdc-address 0x90B87CEa589C66E0A271BD5355C3585047724b97 --l1-usdc-bridge-address 0xc63C3EA966E0E6a1F8C45f638D0447da06A9F287 --l2-usdc-bridge-address 0xD1B6bc625487672a7AA04531c96fF1535c480d89`
 >
 >
