@@ -2,6 +2,14 @@
 
 This is a hardhat-plugin that distributes L2 ERC20, USDT, USDC and USDC Bridge.
 
+[Install](##Install)
+[Deploy L2 ERC20](#deploy-l2-erc20)
+[Deploy L2 USDT](#deploy-l2-usdt)
+[Deploy L1 USDC Bridge](#deploy-l1-usdc-bridge)
+[Deploy L2 USDC and L2 USDC Bridge](#deploy-l2-usdc-and-l2-usdc-bridge)
+[Set L1 USDC Bridge with L2 USDC](#set-l1-usdc-bridge--with-l2-usdc)
+
+
 ## Install
 
 > `npm install @tokamak-network/tokamak-l2-token-hardhat-deploy`
