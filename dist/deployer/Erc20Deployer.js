@@ -1,9 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Erc20Deployer = void 0;
+const ethers_1 = require("ethers");
 const artifacts = {
     OptimismMintableERC20Factory: require("../../artifacts-deploy/optimism/contracts/OptimismMintableERC20Factory.json"),
     OptimismMintableERC20: require("../../artifacts-deploy/optimism/contracts/OptimismMintableERC20.json"),
+    USDT: require("../../artifacts-deploy/usdt/contracts/USDT.json"),
 };
 class Erc20Deployer {
     constructor(deployer) {
@@ -22,6 +24,20 @@ class Erc20Deployer {
             L1Token,
             L2Token
         };
+    }
+    static async deployUSDT(actor, l1TokenAddress) {
+        const deployer = new Erc20Deployer(actor);
+        const L2USDT = await deployer.deployL2USDT(l1TokenAddress);
+        return { L2USDT };
+    }
+    async deployL2USDT(l1TokenAddress) {
+        const L2StandardBridge = "0x4200000000000000000000000000000000000010";
+        const deployerAddress = await this.deployer.getAddress();
+        return await this.deployContract(artifacts.USDT.abi, artifacts.USDT.bytecode, [l1TokenAddress, L2StandardBridge], this.deployer);
+    }
+    async deployContract(abi, bytecode, deployParams, actor) {
+        const factory = new ethers_1.ContractFactory(abi, bytecode, actor);
+        return await factory.deploy(...deployParams);
     }
 }
 exports.Erc20Deployer = Erc20Deployer;
