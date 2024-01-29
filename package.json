@@ -1,6 +1,6 @@
 {
   "name": "@tokamak-network/tokamak-l2-token-hardhat-deploy",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "deploy ERC20, USDT, USDC and usdc bridge contract for L2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
