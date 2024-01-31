@@ -222,9 +222,9 @@ Deploy using the **l1-usdc-bridge-set** hardhat task.
 - Required parameters
     - l1-cross-domain-messenger : admin address
     - l1-usdc-address : L1 usdc address
-    - l2-usdc-address : L1 usdc address
+    - l2-usdc-address : L2 usdc address
     - l1-usdc-bridge-address : L1 usdc bridge address
-    - l2-usdc-bridge-address : L1 usdc bridge address
+    - l2-usdc-bridge-address : L2 usdc bridge address
 
 
 **example**
